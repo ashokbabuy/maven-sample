@@ -24,6 +24,11 @@ pipeline {
                 junit 'target/surefire-reports/*.xml'
             }
         }
+        stage('Ansible'){
+            steps{
+                ansiblePlaybook credentialsId: 'ansiblekey', installation: 'clent1', inventory: 'dev.inv', playbook: 'tomcat.yml'
+            }
+        }
  
         }
     }
